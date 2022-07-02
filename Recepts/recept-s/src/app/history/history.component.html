@@ -1,0 +1,24 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="'navigation'"
+      [mode]="'side'"
+      [opened]="this.serV.data === true" >
+    <mat-toolbar>Содержание
+        <button 
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button align = "end"
+        (click)="close()" >
+        <!-- *ngIf="isHandset$ | async" -->
+        <mat-icon aria-label="Side nav toggle icon">keyboard_arrow_right</mat-icon>
+      </button></mat-toolbar>
+
+      <app-recform></app-recform>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <!-- Add Content Here -->
+    <app-card ></app-card>      
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
