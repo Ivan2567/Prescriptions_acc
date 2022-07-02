@@ -5,7 +5,7 @@ import java.util.*;
 import com.example.entities.User;
 import jakarta.inject.Singleton;
 
-@Singleton
+//@Singleton
 public class UserHandler {
     private static final String conn_s = "jdbc:postgresql://45.10.244.15:55532/work100016";
     private static UserHandler instance = null;
