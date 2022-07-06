@@ -1,7 +1,0 @@
-micronaut:
-  application:
-    name: server
-netty:
-  default:
-    allocator:
-      max-order: 3
