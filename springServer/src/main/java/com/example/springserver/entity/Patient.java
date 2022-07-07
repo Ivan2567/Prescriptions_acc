@@ -14,6 +14,7 @@ public class Patient {
 
     public String i;
     public String o;
+
     public String polis;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)

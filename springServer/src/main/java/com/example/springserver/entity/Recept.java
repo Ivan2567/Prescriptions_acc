@@ -39,15 +39,15 @@ public class Recept {
     @OneToMany(mappedBy = "recept", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PreparatRecept> preparatRecepts;
 
-    public Recept(int id, String dateof, int srok, String status, String diagnoz, String qr, int iddoc, int idpac){
+    public Recept(int id, String dateof, int srok, String status, String diagnoz, String qr, Doctor doctor, Patient patient){
         this.id =id;
         this.dateof = dateof;
         this.srok = srok;
         this.status = status;
         this.diagnoz = diagnoz;
         this.qr = qr;
-//        this.iddoc = iddoc;
-//        this.idpac = idpac;
+        this.doctor = doctor;
+        this.patient = patient;
 
     }
 

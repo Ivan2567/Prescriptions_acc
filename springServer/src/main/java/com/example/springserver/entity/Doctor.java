@@ -51,10 +51,10 @@ public class Doctor {
         return last_name;
     }
 
-    public void setO(String o) {
+    public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
     }
-    public String getO() {
+    public String getPatronymic() {
         return patronymic;
     }
 
