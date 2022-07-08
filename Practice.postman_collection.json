@@ -254,6 +254,54 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "TestQR",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/getQR/qrtext",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"getQR",
+						"qrtext"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestEcp",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/getECP/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"getECP",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
