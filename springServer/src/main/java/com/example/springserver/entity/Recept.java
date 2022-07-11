@@ -3,6 +3,7 @@ package com.example.springserver.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -11,7 +12,7 @@ public class Recept {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
-    public String dateof;
+    public Timestamp dateof;
     public int srok;
     public String status;
     public String diagnoz;
@@ -39,7 +40,7 @@ public class Recept {
     @OneToMany(mappedBy = "recept", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PreparatRecept> preparatRecepts;
 
-    public Recept(int id, String dateof, int srok, String status, String diagnoz, String qr, Doctor doctor, Patient patient){
+    public Recept(int id, Timestamp dateof, int srok, String status, String diagnoz, String qr, Doctor doctor, Patient patient){
         this.id =id;
         this.dateof = dateof;
         this.srok = srok;
@@ -62,10 +63,10 @@ public class Recept {
         this.id = id;
     }
 
-    public void setDateof(String dateo) {
+    public void setDateof(Timestamp dateo) {
         this.dateof = dateo;
     }
-    public String getDateof() {
+    public Timestamp getDateof() {
         return dateof;
     }
 

@@ -261,7 +261,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8080/server/getQR/qrtext",
+					"raw": "http://127.0.0.1:8080/server/getQR/1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -273,19 +273,19 @@
 					"path": [
 						"server",
 						"getQR",
-						"qrtext"
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "TestEcp",
+			"name": "GetQRTest",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8080/server/getECP/",
+					"raw": "http://127.0.0.1:8080/server/getQRRecept/86a21d74558840ed2682904aace7bc658335dacf95aa90d47e38ec7aac285958",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -296,8 +296,56 @@
 					"port": "8080",
 					"path": [
 						"server",
-						"getECP",
-						""
+						"getQRRecept",
+						"86a21d74558840ed2682904aace7bc658335dacf95aa90d47e38ec7aac285958"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateEcp",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/createECP/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"createECP",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckECP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/checkECP/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"checkECP",
+						"1"
 					]
 				}
 			},

@@ -12,6 +12,7 @@ public class SpringServerApplication {
 		//Security.addProvider(new BouncyCastleProvider());
 		SpringApplication.run(SpringServerApplication.class, args);
 
+
 	}
 
 }

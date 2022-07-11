@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -41,14 +44,24 @@ public class MainController {
         return mainRep.getPreps(id);
     }
 
-    @GetMapping("/getQR/{text}")
-    public byte[] getQR(@PathVariable("text") String text) throws IOException, WriterException {
-        return mainRep.getQR(text);
+    @GetMapping("/getQR/{receptId}")
+    public //String
+    byte[]
+    getQR(@PathVariable("receptId") int id) throws IOException, WriterException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException {
+        return mainRep.getQR(id);
+    }
+    @GetMapping("/getQRRecept/{qr}")
+    public Recept getQR(@PathVariable("qr") String qr) throws IOException, WriterException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException {
+        return mainRep.getQRrecept(qr);
     }
 
-    @GetMapping("/getECP/")
-    public boolean getECP() throws UnsupportedEncodingException, NoSuchAlgorithmException, SignatureException, InvalidKeyException {
-        return mainRep.ecp();
+    @GetMapping("/createECP/{receptId}")
+    public String getECP(@PathVariable("receptId") int id) throws UnsupportedEncodingException, NoSuchAlgorithmException, SignatureException, InvalidKeyException {
+        return mainRep.GetECP(id);
+    }
+    @GetMapping("/checkECP/{receptId}")
+    public boolean checkECP(@PathVariable("receptId") int id) throws UnsupportedEncodingException, NoSuchAlgorithmException, SignatureException, InvalidKeyException {
+        return mainRep.CheckECP(id);
     }
 
 }
