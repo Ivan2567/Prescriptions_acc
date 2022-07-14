@@ -30,10 +30,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+//Не рабочий репозиторий
 @Repository
 @Transactional
 public class MainRep {
-
+//todo имена методов с маленькой буквы
+    //todo нужно использовать spring jpa для доступа к БД и получения данных (у тебя же
+    //создаются запросы через jdbc)
+    //todo контроллер должен либо вызывать репозитории (если не требуется производить действий,
+    //бизнес-логики над полученными данными) либо вызывать метод соответствующего сервиса
+    //который в свою очередь обращается к репозиторию
+    //todo добавь слой сервиса и там реализовывай бизнас-логику (например, запрос актуальных рецептов для указанного пациента)
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -41,17 +48,17 @@ public class MainRep {
     }
 
     //Авторизация
-    public List<Patient> Auto(String polis) {
-        return entityManager.createQuery("from Patient c where c.polis = '"+polis+"'", Patient.class).getResultList();
-    }
+//    public List<Patient> Auto(String polis) {
+//        return entityManager.createQuery("from Patient c where c.polis = '"+polis+"'", Patient.class).getResultList();
+//    }
     //Список рецептов по id пациента
-    public List<Recept> getRecepts(int id) {
-        return entityManager.createQuery("from Recept c where c.patient.id = "+id+" order by c.id desc", Recept.class).getResultList();
-    }
+//    public List<Recept> getRecepts(int id) {
+//        return entityManager.createQuery("from Recept c where c.patient.id = "+id+" order by c.id desc", Recept.class).getResultList();
+//    }
     //Список лекарств по рецепту по id рецепта
-    public List<PreparatRecept> getPreps(int id) {
-        return entityManager.createQuery("from PreparatRecept c where c.recept.id = "+id+" order by c.id desc", PreparatRecept.class).getResultList();
-    }
+//    public List<PreparatRecept> getPreps(int id) {
+//        return entityManager.createQuery("from PreparatRecept c where c.recept.id = "+id+" order by c.id desc", PreparatRecept.class).getResultList();
+//    }
     //QR-code(Готово) : id шифруем, затем генерируем qr
     final String password = "password";
     String salt = KeyGenerators.string().generateKey();
@@ -72,7 +79,7 @@ public class MainRep {
         //if(flag){EncrypDES(); flag = !flag;}
         Recept recept = entityManager.find(Recept.class, id);
         String text = "qr";
-        String cipherText = encryptor.encrypt(String.valueOf(recept.id));
+        String cipherText = encryptor.encrypt(String.valueOf(recept.getId()));
         //String decryptedText = encryptor.decrypt(cipherText);
 //        if(Objects.equals(recept.qr, "qr"))
 //        {
@@ -169,8 +176,8 @@ public class MainRep {
         Recept recept = entityManager.find(Recept.class, id);
         String text = "";
         text += recept.getDateof();
-        text += recept.getDiagnoz();
-        text += String.valueOf(recept.getSrok());
+        text += recept.getDiagnosis();
+        text += String.valueOf(recept.getTerm());
         text += String.valueOf(recept.getDoctor().getId());
         System.out.println(text);
         return text;
@@ -195,10 +202,10 @@ public class MainRep {
         return list;
     }
 
-    public String  GetECP(int id) throws UnsupportedEncodingException, NoSuchAlgorithmException, SignatureException, InvalidKeyException {
+    public byte[]  GetECP(int id) throws UnsupportedEncodingException, NoSuchAlgorithmException, SignatureException, InvalidKeyException {
 
         Recept recept = entityManager.find(Recept.class, id);
-        recept.setQr(new BigInteger(1, CreateECP(id).get(1)).toString(16));
+        recept.setQr(CreateECP(id).get(1));
         entityManager.persist(recept);
         entityManager.merge(recept);
         return recept.getQr();
@@ -211,7 +218,7 @@ public class MainRep {
         signature2.initVerify(keyPair.getPublic());
         //передача данных для сравнения
         Recept recept = entityManager.find(Recept.class, id);
-        signature2.update(new BigInteger(recept.getQr(), 16).toByteArray());
+        signature2.update(recept.getQr());
         //передача подписи
         boolean verified = signature2.verify(list.get(1));
 

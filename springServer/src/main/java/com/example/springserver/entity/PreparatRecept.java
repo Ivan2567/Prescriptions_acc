@@ -9,12 +9,19 @@ import javax.persistence.*;
 public class PreparatRecept {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
-    public int vipisano;
-    public int doza;
-    public int kolvodoz;
-    public int kolvokurs;
-    public String kurs;
+    //todo vipisano и подобное поменяй на английские аналоги
+    @Column(name = "id", nullable = false)
+    private long id;
+    @Column(name = "prescribed", nullable = false)
+    private int prescribed;
+    @Column(name = "dose", nullable = false)
+    private int dose;
+    @Column(name = "qtydose", nullable = false)
+    private int qtydose;
+    @Column(name = "qtykurs", nullable = false)
+    private int qtykurs;
+    @Column(name = "kurs", nullable = false)
+    private String kurs;
 //    public String sppr;
 //    public String edizm;
 
@@ -41,14 +48,14 @@ public class PreparatRecept {
 
     public PreparatRecept(int id, String sppr
 //            , String edizm
-            , int vipisano, int doza, int kolvodoz, int kolvokurs, String kurs){
+            , int prescribed, int dose, int qtydose, int qtykurs, String kurs){
         this.id =id;
 //        this.sppr = sppr;
 //        this.edizm = edizm;
-        this.vipisano = vipisano;
-        this.doza = doza;
-        this.kolvodoz = kolvodoz;
-        this.kolvokurs = kolvokurs;
+        this.prescribed = prescribed;
+        this.dose = dose;
+        this.qtydose = qtydose;
+        this.qtykurs = qtykurs;
         this.kurs = kurs;
 
     }
@@ -57,7 +64,7 @@ public class PreparatRecept {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
     public void setId(int id) {
@@ -78,32 +85,32 @@ public class PreparatRecept {
 //        return edizm;
 //    }
 
-    public void setVipisano(int vipisano) {
-        this.vipisano = vipisano;
+    public void setPrescribed(int prescribed) {
+        this.prescribed = prescribed;
     }
-    public int getVipisano() {
-        return vipisano;
-    }
-
-    public void setDoza(int doza) {
-        this.doza = doza;
-    }
-    public int getDoza() {
-        return doza;
+    public int getPrescribed() {
+        return prescribed;
     }
 
-    public void setKolvodoz(int kolvodoz) {
-        this.kolvodoz = kolvodoz;
+    public void setDose(int dose) {
+        this.dose = dose;
     }
-    public int getKolvodoz() {
-        return kolvodoz;
+    public int getDose() {
+        return dose;
     }
 
-    public void setKolvokurs(int kolvokurs) {
-        this.kolvokurs = kolvokurs;
+    public void setQtydose(int qtydose) {
+        this.qtydose = qtydose;
     }
-    public int getKolvokurs() {
-        return kolvokurs;
+    public int getQtydose() {
+        return qtydose;
+    }
+
+    public void setQtykurs(int qtykurs) {
+        this.qtykurs = qtykurs;
+    }
+    public int getQtykurs() {
+        return qtykurs;
     }
 
     public void setKurs(String kurs) {
@@ -116,7 +123,7 @@ public class PreparatRecept {
     @Override
     public String toString(){
         return String.format("ID:%s | F:%s | I:%s | O:%s | ecp:%s",
-                this.id,this.vipisano,this.doza,this.kolvodoz,this.kolvokurs,this.kurs
+                this.id,this.prescribed,this.dose,this.qtydose,this.qtykurs,this.kurs
 //                ,this.idrec,this.idpre
         );
     }

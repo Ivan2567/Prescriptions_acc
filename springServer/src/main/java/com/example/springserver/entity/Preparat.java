@@ -8,21 +8,31 @@ import java.util.List;
 public class Preparat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
-    public int kolvo;
-    public String prepname;
-    public String sppr;
-    public String edizm;
+    //todo kolvo и подобное поменяй на английские аналоги (kolvo - amount и т. д.)
+    @Column(name = "id", nullable = false)
+    private long id;
+
+    @Column(name = "quantity", nullable = false)
+    private int quantity;
+
+    @Column(name = "medname", nullable = false)
+    private String medname;
+
+    @Column(name = "method_of_taking", nullable = false)
+    private String methodoftaking;
+
+    @Column(name = "unit", nullable = false)
+    private String unit;
 
     @OneToMany(mappedBy = "preparat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PreparatRecept> preparatRecepts;
 
-    public Preparat(int id, int kolvo, String prepname, String sppr, String edizm){
+    public Preparat(int id, int quantity, String medname, String methodoftaking, String unit){
         this.id =id;
-        this.prepname = prepname;
-        this.kolvo = kolvo;
-        this.sppr = sppr;
-        this.edizm = edizm;
+        this.medname = medname;
+        this.quantity = quantity;
+        this.methodoftaking = methodoftaking;
+        this.unit = unit;
 
     }
 
@@ -30,45 +40,45 @@ public class Preparat {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setKolvo(int kolvo) {
-        this.kolvo = kolvo;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
-    public int getKolvo() {
-        return kolvo;
-    }
-
-    public void setPrepname(String prepname) {
-        this.prepname = prepname;
-    }
-    public String getPrepname() {
-        return prepname;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setSppr(String sppr) {
-        this.sppr = sppr;
+    public void setMedname(String medname) {
+        this.medname = medname;
     }
-    public String getSppr() {
-        return sppr;
+    public String getMedname() {
+        return medname;
     }
 
-    public void setEdizm(String edizm) {
-        this.edizm = edizm;
+    public void setMethodoftaking(String methodoftaking) {
+        this.methodoftaking = methodoftaking;
     }
-    public String getEdizm() {
-        return edizm;
+    public String getMethodoftaking() {
+        return methodoftaking;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+    public String getUnit() {
+        return unit;
     }
 
 
     @Override
     public String toString(){
         return String.format("ID:%s | F:%s | I:%s | O:%s | ecp:%s",
-                this.id,this.kolvo,this.sppr,this.edizm);
+                this.id,this.quantity,this.methodoftaking,this.unit);
     }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,12 +12,24 @@ import java.util.List;
 public class Recept {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
-    public Timestamp dateof;
-    public int srok;
-    public String status;
-    public String diagnoz;
-    public String qr;
+    //todo srok, diagnoz и подобное поменяй на английские аналоги
+    @Column(name = "id", nullable = false)
+    private long id;
+
+    @Column(name = "dateof", nullable = false)
+    private Date dateof;
+
+    @Column(name = "term", nullable = false)
+    private int term;
+
+    @Column(name = "status", nullable = false)
+    private String status;
+
+    @Column(name = "diagnosis", nullable = false)
+    private String diagnosis;
+
+    @Column(name = "qr", nullable = false)
+    private byte[] qr;
     //public int iddoc;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "iddoc")
@@ -40,12 +53,12 @@ public class Recept {
     @OneToMany(mappedBy = "recept", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PreparatRecept> preparatRecepts;
 
-    public Recept(int id, Timestamp dateof, int srok, String status, String diagnoz, String qr, Doctor doctor, Patient patient){
+    public Recept(int id, Date dateof, int term, String status, String diagnosis, byte[] qr, Doctor doctor, Patient patient){
         this.id =id;
         this.dateof = dateof;
-        this.srok = srok;
+        this.term = term;
         this.status = status;
-        this.diagnoz = diagnoz;
+        this.diagnosis = diagnosis;
         this.qr = qr;
         this.doctor = doctor;
         this.patient = patient;
@@ -56,25 +69,25 @@ public class Recept {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setDateof(Timestamp dateo) {
+    public void setDateof(Date dateo) {
         this.dateof = dateo;
     }
-    public Timestamp getDateof() {
+    public Date getDateof() {
         return dateof;
     }
 
-    public void setSrok(int srok) {
-        this.srok = srok;
+    public void setTerm(int term) {
+        this.term = term;
     }
-    public int getSrok() {
-        return srok;
+    public int getTerm() {
+        return term;
     }
 
     public void setStatus(String status) {
@@ -84,17 +97,17 @@ public class Recept {
         return status;
     }
 
-    public void setDiagnoz(String diagnoz) {
-        this.diagnoz = diagnoz;
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
     }
-    public String getDiagnoz() {
-        return diagnoz;
+    public String getDiagnosis() {
+        return diagnosis;
     }
 
-    public void setQr(String qr) {
+    public void setQr(byte[] qr) {
         this.qr = qr;
     }
-    public String getQr() {
+    public byte[] getQr() {
         return qr;
     }
 
@@ -115,7 +128,7 @@ public class Recept {
     @Override
     public String toString(){
         return String.format("ID:%s | F:%s | I:%s | O:%s | ecp:%s",
-                this.id,this.dateof,this.srok,this.status,this.diagnoz,this.qr
+                this.id,this.dateof,this.term,this.status,this.diagnosis,this.qr
 //                ,this.iddoc,this.idpac
         );
     }

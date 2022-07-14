@@ -8,23 +8,32 @@ import java.util.List;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    @Column(name = "id", nullable = false)
+    public long id;
+//todo переделай именование переменных (f - lastName и т. д.)
+    //можешь переделать и в таблице и в сущности. Если не хочешь переделывать в таблице
+    // то сделай как обычно делают - в сущности Doctor я тебе написал как
+    @Column(name = "first_name", nullable = false)
+    private String firstname;
 
-    public String f;
+    @Column(name = "last_name", nullable = false)
+    private String lastname;
 
-    public String i;
-    public String o;
+    @Column(name = "patronymic", nullable = false)
+    private String patronymic;
 
-    public String polis;
+    @Column(name = "polis", nullable = false)
+
+    private String polis;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Recept> recepts;
 
-    public Patient(int id, String f, String i, String o, String polis){
+    public Patient(long id, String firstname, String lastname, String patronymic, String polis){
         this.id =id;
-        this.f = f;
-        this.i = i;
-        this.o = o;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.patronymic = patronymic;
         this.polis = polis;
     }
 
@@ -32,32 +41,32 @@ public class Patient {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setF(String f) {
-        this.f = f;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
-    public String getF() {
-        return f;
-    }
-
-    public void setI(String i) {
-        this.i = i;
-    }
-    public String getI() {
-        return i;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setO(String o) {
-        this.o = o;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
-    public String getO() {
-        return o;
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+    public String getPatronymic() {
+        return patronymic;
     }
 
     public void setPolis(String polis) {
@@ -70,6 +79,6 @@ public class Patient {
     @Override
     public String toString(){
         return String.format("ID:%s | F:%s | I:%s | O:%s | polis:%s",
-                this.id,this.f,this.i,this.o,this.polis);
+                this.id,this.firstname,this.lastname,this.patronymic,this.polis);
     }
 }

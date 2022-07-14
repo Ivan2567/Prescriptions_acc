@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.transaction.*;
 import java.util.List;
 
+//Не рабочий репозиторий
 @Repository
 @Transactional
 public class TestRep {

@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "f033d614-c91f-4937-9361-f8d5ac89dd97",
+		"name": "Practice Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19762833"
+	},
+	"item": [
+		{
+			"name": "PatientAut",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/patient/1111111111111111",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"patient",
+						"1111111111111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReceptList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/recept_list/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"recept_list",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPrepList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/preparat_list/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"preparat_list",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestQR",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/getQR/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"getQR",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetQRTest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/getQRRecept/784e8d8ced3e1ad5668191dc1b9eea5ec6a2267611a8a3b68f6fc38ed67de32a",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"getQRRecept",
+						"784e8d8ced3e1ad5668191dc1b9eea5ec6a2267611a8a3b68f6fc38ed67de32a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateEcp",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/createECP/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"createECP",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckECP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/checkECP/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"checkECP",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeReceptStatus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/changeStatus/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"changeStatus",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFilterListRec",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"startdate\": \"2022-07-10T21:00:00.000+00:00\",\r\n    \"enddate\": \"2022-07-15T21:00:00.000+00:00\",\r\n    \"activeflag\": true,\r\n    \"disactiveflag\": false,\r\n    \"timeoutflag\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/server/filterRecs/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"server",
+						"filterRecs",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
