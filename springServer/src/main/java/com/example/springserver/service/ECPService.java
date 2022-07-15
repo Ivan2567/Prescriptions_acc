@@ -23,7 +23,7 @@ public class ECPService {
     public ECPService() throws NoSuchAlgorithmException {
     }
 
-    private String textRec (long id){
+    public String textRec (long id){
         Recept recept = receptRep.findReceptById(id);
         String text = "";
         text += recept.getDateof();
